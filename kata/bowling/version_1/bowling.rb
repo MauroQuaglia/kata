@@ -1,4 +1,4 @@
-require '../frame'
+require_relative '../../../kata/bowling/version_1/frame'
 
 class Bowling
 
@@ -11,9 +11,9 @@ class Bowling
   end
 
   def total_score
-    score=0
+    score = 0
     @shots.frames_numbers.times do |n|
-      score += frame(n+1).score if n != 10
+      score += frame(n + 1).score if n != 10
     end
     score
   end

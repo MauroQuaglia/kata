@@ -1,5 +1,5 @@
-require 'test-unit'
-require '../shots'
+require_relative '../../spec_helper'
+require_relative '../../../kata/bowling/version_1/shots'
 
 class ShotsTest < Test::Unit::TestCase
 

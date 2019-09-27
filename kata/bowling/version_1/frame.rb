@@ -19,7 +19,7 @@ class Frame
   end
 
   def sum(shots)
-    shots.inject { |s, x| s + x }
+    shots.inject {|s, x| s + x}
   end
 
 end

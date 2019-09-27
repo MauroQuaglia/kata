@@ -3,12 +3,12 @@ require '../frame'
 class Bowling
 
   def initialize(shots)
-    @shots=shots
-    @score=0
+    @shots = shots
+    @score = 0
   end
 
   def score
-    10.times { |n| @score+=frame(n).score }
+    10.times {|n| @score += frame(n).score}
     @score
   end
 

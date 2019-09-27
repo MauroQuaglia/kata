@@ -39,7 +39,7 @@ describe Checkout do
     co.scan('B');
     expect(co.total).to eq(175)
   end
-  
+
   private
 
   def price(goods)

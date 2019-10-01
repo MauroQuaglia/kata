@@ -1,4 +1,4 @@
-class Shots
+class Shots2
 
   def initialize(points_array)
     @shots = points_array.each_with_index {|points, shot| points_array.insert(shot.succ, nil) if strike?(shot, points)}

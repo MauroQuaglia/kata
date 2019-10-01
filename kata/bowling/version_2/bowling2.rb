@@ -1,6 +1,6 @@
-require '../frame'
+require_relative '../../../kata/bowling/version_2/frame2'
 
-class Bowling
+class Bowling2
 
   def initialize(shots)
     @shots = shots
@@ -15,7 +15,7 @@ class Bowling
   private
 
   def frame(n)
-    Frame.new(@shots.at_frames(n))
+    Frame2.new(@shots.at_frames(n))
   end
 
 end

@@ -1,4 +1,4 @@
-class Frame
+class Frame1
 
   def initialize(shots)
     @shots = shots.compact.push(0, 0)

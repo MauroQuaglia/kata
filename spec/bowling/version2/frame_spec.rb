@@ -1,7 +1,7 @@
 require_relative '../../spec_helper'
-require_relative '../../../kata/bowling/version_2/frame2'
+require_relative '../../../kata/bowling/version2/frame'
 
-describe Frame2 do
+describe Version2::Frame do
 
   it 'should be a ordinary' do
     expect(described_class.new([6, 2]).score).to eq(8)

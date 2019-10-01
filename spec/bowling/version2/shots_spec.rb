@@ -1,7 +1,7 @@
 require_relative '../../spec_helper'
-require_relative '../../../kata/bowling/version_2/shots2'
+require_relative '../../../kata/bowling/version2/shots'
 
-describe Shots2 do
+describe Version2::Shots do
 
   it 'first frame shots' do
     shots = described_class.new([1, 2])

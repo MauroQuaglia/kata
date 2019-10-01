@@ -1,12 +1,12 @@
 require_relative '../../spec_helper'
-require_relative '../../../kata/bowling/version_1/bowling1'
-require_relative '../../../kata/bowling/version_1/shots1'
+require_relative '../../../kata/bowling/version1/bowling'
+require_relative '../../../kata/bowling/version1/shots'
 
-describe Bowling1 do
+describe Version1::Bowling do
 
   it 'should execute acceptance test' do
     bowling = described_class.new(
-        Shots1.new([1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6])
+        Version1::Shots.new([1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6])
     )
 
     expect(bowling.frame(1).score).to eq(5)

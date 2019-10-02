@@ -25,5 +25,5 @@ describe FizzBuzz do
     expect(described_class.new.for(10)).to eq('Buzz')
     expect(described_class.new.for(30)).to eq('FizzBuzz')
   end
-  
+
 end

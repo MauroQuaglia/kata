@@ -1,10 +1,12 @@
-require_relative '../erground/spec/time_support'
-require_relative '../../lib/ground/lib/daily_ticket'
+require_relative '../spec_helper'
+require_relative '../../kata/underground/daily_ticket'
+require_relative '../../spec/underground/time_support'
+require 'date'
 
-RSpec.describe DailyTicket do
+describe DailyTicket do
   include TimeSupport
 
-  subject { described_class.new }
+  subject {described_class.new}
 
   it 'should be valid at first scan' do
     expect(subject.scan_at(DateTime.now)).to eq(ok)

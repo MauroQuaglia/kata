@@ -1,5 +1,5 @@
 require 'date'
-require_relative 'lib/rground/lib/ticket_shop'
+require_relative '../../kata/underground/ticket_shop'
 
 print 'What kind of ticket do you want: ONEWAY, DAILY or WEEKLY? -> '
 ticket = TicketShop.buy(gets.chomp.to_sym)

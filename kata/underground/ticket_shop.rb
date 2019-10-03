@@ -1,6 +1,6 @@
-require_relative '../lib/ound/lib/one_way_ticket'
-require_relative '../lib/derground/lib/daily_ticket'
-require_relative '../lib/weekly_ticket'
+require_relative '../../kata/underground/one_way_ticket'
+require_relative '../../kata/underground/daily_ticket'
+require_relative '../../kata/underground/weekly_ticket'
 
 class TicketShop
 

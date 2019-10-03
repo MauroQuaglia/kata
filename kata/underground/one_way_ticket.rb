@@ -1,4 +1,4 @@
-require_relative '../lib/ound/lib/ticket'
+require_relative '../../kata/underground/ticket'
 
 class OneWayTicket < Ticket
 

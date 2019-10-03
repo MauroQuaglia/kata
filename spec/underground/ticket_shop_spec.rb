@@ -1,6 +1,7 @@
-require_relative '../../lib/d/lib/ticket_shop'
+require_relative '../spec_helper'
+require_relative '../../kata/underground/ticket_shop'
 
-RSpec.describe TicketShop do
+describe TicketShop do
 
   it 'should sell a one way ticket' do
     expect(

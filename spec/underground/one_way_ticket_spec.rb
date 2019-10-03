@@ -1,10 +1,12 @@
-require_relative '../erground/spec/time_support'
-require_relative '../../lib/ground/lib/one_way_ticket'
+require_relative '../spec_helper'
+require_relative '../../kata/underground/one_way_ticket'
+require_relative '../../spec/underground/time_support'
+require 'date'
 
-RSpec.describe OneWayTicket do
+describe OneWayTicket do
   include TimeSupport
 
-  subject { described_class.new }
+  subject {described_class.new}
 
   before do
     @time = DateTime.now

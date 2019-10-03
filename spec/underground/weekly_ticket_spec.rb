@@ -1,10 +1,12 @@
-require_relative '../erground/spec/time_support'
-require_relative '../../lib/ground/lib/weekly_ticket'
+require_relative '../spec_helper'
+require_relative '../../kata/underground/weekly_ticket'
+require_relative '../../spec/underground/time_support'
+require 'date'
 
-RSpec.describe WeeklyTicket do
+describe WeeklyTicket do
   include TimeSupport
 
-  subject { described_class.new }
+  subject {described_class.new}
 
   before do
     @monday = DateTime.new(2014, 10, 20)

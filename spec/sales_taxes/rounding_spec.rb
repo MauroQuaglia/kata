@@ -1,5 +1,5 @@
 require 'test-unit'
-require_relative '../rounding'
+require_relative '../../../kata/sales_taxes/nding'
 
 class RoundingTest < Test::Unit::TestCase
 

@@ -1,5 +1,5 @@
 require 'test-unit'
-require '../shopper'
+require_relative '../../../kata/sales_taxes/pper'
 
 class ShopperTest < Test::Unit::TestCase
 

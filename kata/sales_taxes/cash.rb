@@ -1,4 +1,4 @@
-class Checkout
+class Cash
 
   def initialize(rounding, receipt)
     @rounding = rounding

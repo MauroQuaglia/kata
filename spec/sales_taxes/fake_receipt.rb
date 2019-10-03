@@ -2,9 +2,9 @@ class FakeReceipt
   attr_reader :description, :taxes, :total
 
   def initialize
-    @description=''
-    @taxes=-1
-    @total=-1
+    @description = ''
+    @taxes = -1
+    @total = -1
   end
 
   def add(description, price)

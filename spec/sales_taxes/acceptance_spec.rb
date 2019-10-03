@@ -1,17 +1,19 @@
-require 'test-unit'
-require '../rounding'
-require '../receipt'
-require '../supermarket'
-require '../shopper'
-require '../product_factory'
+require_relative '../spec_helper'
+require_relative '../../kata/sales_taxes/rounding'
+require_relative '../../kata/sales_taxes/receipt'
+require_relative '../../kata/sales_taxes/product_factory'
+require_relative '../../kata/sales_taxes/supermarket'
+require_relative '../../kata/sales_taxes/shopper'
 
-class AcceptanceTest < Test::Unit::TestCase
+describe 'Acceptance' do
 
-  def setup
-    @supermarket = Supermarket.new Rounding.new, Receipt.new, ProductFactory.new
+  before do
+    rounding = Rounding.new(0.05)
+    receipt = Receipt.new(2)
+    @supermarket = Supermarket.new rounding, receipt, ProductFactory.new
   end
 
-  def test_acceptance_1
+  it 'test acceptance 1' do
     input = <<-I
 1 book at 12.49
 1 music CD at 14.99
@@ -28,7 +30,7 @@ Total: 29.83
     assert_receipt(input, output)
   end
 
-  def test_acceptance_2
+  it 'test acceptance 2' do
     input = <<-I
 1 imported box of chocolates at 10.00
 1 imported bottle of perfume at 47.50
@@ -43,7 +45,7 @@ Total: 65.15
     assert_receipt(input, output)
   end
 
-  def test_acceptance_3
+  it 'test acceptance 3' do
     input = <<-I
 1 imported bottle of perfume at 27.99
 1 bottle of perfume at 18.99
@@ -67,7 +69,7 @@ Total: 74.68
   def assert_receipt(input, output)
     @supermarket.checkout(Shopper.new(input))
 
-    assert_equal output, @supermarket.receipt
+    expect(@supermarket.receipt).to eq(output)
   end
 
 end

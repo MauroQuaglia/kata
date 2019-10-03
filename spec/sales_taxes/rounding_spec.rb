@@ -1,24 +1,24 @@
-require 'test-unit'
-require_relative '../../../kata/sales_taxes/nding'
+require_relative '../spec_helper'
+require_relative '../../kata/sales_taxes/rounding'
 
-class RoundingTest < Test::Unit::TestCase
+describe Rounding do
 
-  def test_rounding_up
+  it 'rounding up' do
     rounding = Rounding.new(0.05)
 
-    assert_equal 0, rounding.up(0)
-    assert_equal 0.05, rounding.up(0.025)
-    assert_equal 0.05, rounding.up(0.050)
-    assert_equal 0.10, rounding.up(0.075)
-    assert_equal 0.10, rounding.up(0.100)
+    expect(rounding.up(0)).to eq(0)
+    expect(rounding.up(0.025)).to eq(0.05)
+    expect(rounding.up(0.050)).to eq(0.05)
+    expect(rounding.up(0.075)).to eq(0.10)
+    expect(rounding.up(0.100)).to eq(0.10)
   end
 
-  def test_no_rounding
+  it 'no rounding' do
     rounding = Rounding.new(0)
 
-    assert_equal 0, rounding.up(0)
-    assert_equal 0.50, rounding.up(0.50)
-    assert_equal 1.00, rounding.up(1.00)
+    expect(rounding.up(0)).to eq(0)
+    expect(rounding.up(0.50)).to eq(0.50)
+    expect(rounding.up(1.00)).to eq(1.00)
   end
 
 end

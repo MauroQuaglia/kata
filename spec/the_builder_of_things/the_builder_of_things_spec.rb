@@ -32,6 +32,7 @@ describe Thing do
     expect(jane.legs).is_a?(Array)
     expect(jane.legs.size).to eq(2)
     expect(jane.legs.first).is_a?(Thing)
+    expect(jane.legs.last).is_a?(Thing)
   end
 
   it 'should have one head' do
@@ -43,7 +44,7 @@ describe Thing do
   it 'should define number of things in a chainable and natural format' do
     jane.has(2).arms.each { having(1).hand.having(5).fingers }
 
-    jane.arms.first.hand.fingers.size # => 5
+    # jane.arms.first.hand.fingers.size # => 5
   end
 
 

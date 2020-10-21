@@ -19,6 +19,13 @@ class Poor
 end
 
 class Creso
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+    yield if block_given?
+  end
+
   def method_missing(symbol, *args)
     define_singleton_method("#{symbol}?") {true}
     puts 'Creso'
@@ -45,9 +52,14 @@ describe 'Metaprogramming' do
   end
 
   it 'creso' do
-    creso = Creso.new
+    creso = Creso.new('Creso')
     creso.man
     expect(creso.respond_to?(:man?)).to be_truthy
     expect(creso.man?).to be_truthy
   end
+
+  it 'creso block' do
+    Creso.new('Creso') { puts 'hello'}
+  end
+
 end

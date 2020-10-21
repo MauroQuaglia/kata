@@ -20,4 +20,11 @@ describe Thing do
     expect(jane.man?).to be_falsey
   end
 
+  it 'should be a parent of joe' do
+    jane.is_the.parent_of.joe
+    expect(jane.respond_to?(:parent_of)).to be_truthy
+    expect(jane.parent_of).to eq('joe')
+  end
+
+
 end

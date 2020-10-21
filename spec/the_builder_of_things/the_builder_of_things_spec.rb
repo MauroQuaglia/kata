@@ -26,5 +26,25 @@ describe Thing do
     expect(jane.parent_of).to eq('joe')
   end
 
+  it 'should have a two legs' do
+    jane.has(2).legs
+    expect(jane.respond_to?(:legs)).to be_truthy
+    expect(jane.legs).is_a?(Array)
+    expect(jane.legs.size).to eq(2)
+    expect(jane.legs.first).is_a?(Thing)
+  end
+
+  it 'should have one head' do
+    jane.has(1).head
+    expect(jane.respond_to?(:head)).to be_truthy
+    expect(jane.head).is_a?(Thing)
+  end
+
+  it 'should define number of things in a chainable and natural format' do
+    jane.has(2).arms.each { having(1).hand.having(5).fingers }
+
+    jane.arms.first.hand.fingers.size # => 5
+  end
+
 
 end

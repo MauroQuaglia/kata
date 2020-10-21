@@ -8,6 +8,7 @@ class Thing
 
   def method_missing(symbol, *args)
     @collector << symbol
+    @collector << args.first if args.any?
     #puts "symbol: [#{symbol}] - args: [#{args}]"
     puts "collector: #{@collector}"
 
@@ -24,6 +25,12 @@ class Thing
     if @collector[0] == :is_the && @collector.size == 3
       result = @collector[2].to_s
       define_singleton_method("#{@collector[1]}") {result}
+      @collector.clear
+    end
+
+    if @collector[0] == :has && @collector.size == 3
+      result = @collector[1] == 1 ? Thing.new(@collector[2]) : [Thing.new(@collector[2])] * @collector[1]
+      define_singleton_method("#{@collector[2]}") {result}
       @collector.clear
     end
 

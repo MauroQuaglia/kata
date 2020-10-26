@@ -27,8 +27,7 @@ class Creso
   end
 
   def method_missing(symbol, *args)
-    define_singleton_method("#{symbol}?") {true}
-    puts 'Creso'
+    define_singleton_method("#{symbol}?") {args.first}
   end
 end
 
@@ -51,15 +50,27 @@ describe 'Metaprogramming' do
     expect(rich.cucu).to eq('In the Rich!')
   end
 
-  it 'creso' do
+  it 'creso man' do
     creso = Creso.new('Creso')
-    creso.man
+    creso.man(true)
     expect(creso.respond_to?(:man?)).to be_truthy
     expect(creso.man?).to be_truthy
   end
 
+  it 'creso man redefined' do
+    creso = Creso.new('Creso')
+
+    creso.man(true)
+    expect(creso.respond_to?(:man?)).to be_truthy
+    expect(creso.man?).to be_truthy
+
+    creso.man(false)
+    expect(creso.respond_to?(:man?)).to be_truthy
+    expect(creso.man?).to be_falsey
+  end
+
   it 'creso block' do
-    Creso.new('Creso') { puts 'hello'}
+    Creso.new('Creso') {puts 'hello'}
   end
 
 end

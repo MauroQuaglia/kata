@@ -41,10 +41,11 @@ describe Thing do
     expect(jane.head).is_a?(Thing)
   end
 
-  it 'should define number of things in a chainable and natural format' do
-    jane.has(2).arms.each { having(1).hand.having(5).fingers }
-
-    # jane.arms.first.hand.fingers.size # => 5
+  it 'should define number' do
+    jane.has(1).head.each {puts 'ciao'}
+    jane.head
+    #expect(jane.respond_to?(:head)).to be_truthy
+    #expect(jane.head).is_a?(Thing)
   end
 
 

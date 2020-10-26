@@ -4,13 +4,15 @@ class Thing
 
   def initialize(name, &block)
     @name = name
-    @block = block
     @collector = []
+    puts block.inspect
+    instance_eval {block}
   end
 
-  #jane.has(2).arms.each { having(1).hand.having(5).fingers }
-  #jane.arms.first ---> Thing('arms')
-  #jane.arms.first.hand.fingers.size
+  def having
+    raise 'jskjskjsk'
+  end
+
   def method_missing(symbol, *args, &block)
     @collector.clear if KEYS.include?(symbol)
     @collector << symbol
@@ -39,8 +41,9 @@ class Thing
         result = Array([Thing.new(method_name)] * count)
       end
       if @collector.size == 5
+        puts @collector.inspect
         method_block = @collector[4]
-        result = Array([Thing.new(method_name) {method_block}] * count)
+        result = Array([Thing.new(method_name, &method_block)] * count)
       end
       define_singleton_method("#{method_name}") {result}
     end

@@ -78,6 +78,7 @@ describe 'Metaprogramming' do
   end
 
   it 'creso block' do
+    #jane.has(2).arms.each { having(1).hand.having(5).fingers }
     Creso.new('Creso').each {having(1)}
   end
 

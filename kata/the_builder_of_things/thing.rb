@@ -18,29 +18,38 @@ class Thing
     @collector << block if block_given?
     #puts "collector: #{@collector}"
 
-    if @collector.first == :is_a
-      define_singleton_method("#{@collector[1]}?") {true}
+    if key == :is_a
+      method_name = @collector[1]
+      define_singleton_method("#{method_name}?") {true}
     end
 
-    if @collector.first == :is_not_a
-      define_singleton_method("#{@collector[1]}?") {false}
+    if key == :is_not_a
+      method_name = @collector[1]
+      define_singleton_method("#{method_name}?") {false}
     end
 
-    if @collector.first == :is_the
-      result = @collector[2].to_s
-      define_singleton_method("#{@collector[1]}") {result}
+    if key == :is_the
+      method_name, method_arg = @collector[1], @collector[2].to_s
+      define_singleton_method("#{method_name}") {method_arg}
     end
 
-    if @collector[0] == :has
-      result = Array([Thing.new(@collector[2])] * @collector[1])
-      if @collector.size == 5
-        result = Array([Thing.new(@collector[2]) {@collector[4]}] * @collector[1])
+    if key == :has
+      method_name, count = @collector[2], @collector[1]
+      if @collector.size == 3
+        result = Array([Thing.new(method_name)] * count)
       end
-      define_singleton_method("#{@collector[2]}") {result}
+      if @collector.size == 5
+        method_block = @collector[4]
+        result = Array([Thing.new(method_name) {method_block}] * count)
+      end
+      define_singleton_method("#{method_name}") {result}
     end
 
     self
   end
 
+  def key
+    @collector[0]
+  end
 
 end

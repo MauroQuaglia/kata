@@ -23,7 +23,15 @@ class Creso
 
   def initialize(name)
     @name = name
-    yield if block_given?
+  end
+
+  def each(&block)
+    puts block.inspect
+    block.call
+  end
+
+  def having(value)
+    raise 'hjhj'
   end
 
   def method_missing(symbol, *args)
@@ -70,7 +78,7 @@ describe 'Metaprogramming' do
   end
 
   it 'creso block' do
-    Creso.new('Creso') {puts 'hello'}
+    Creso.new('Creso').each {having(1)}
   end
 
 end

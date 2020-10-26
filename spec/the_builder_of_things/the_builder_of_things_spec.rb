@@ -42,6 +42,7 @@ describe Thing do
   end
 
   it 'should define number' do
+    # jane.has(2).arms.each { having(1).hand.having(5).fingers }
     jane.has(1).head.each {puts 'ciao'}
     jane.head
     #expect(jane.respond_to?(:head)).to be_truthy

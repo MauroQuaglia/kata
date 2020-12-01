@@ -10,25 +10,21 @@ describe Thing do
 
   it 'should be a person' do
     jane.is_a.person
-    expect(jane.respond_to?(:person?)).to be_truthy
     expect(jane.person?).to be_truthy
   end
 
   it 'should not be a man' do
     jane.is_not_a.man
-    expect(jane.respond_to?(:man?)).to be_truthy
     expect(jane.man?).to be_falsey
   end
 
   it 'should be a parent of joe' do
     jane.is_the.parent_of.joe
-    expect(jane.respond_to?(:parent_of)).to be_truthy
     expect(jane.parent_of).to eq('joe')
   end
 
   it 'should have a two legs' do
     jane.has(2).legs
-    expect(jane.respond_to?(:legs)).to be_truthy
     expect(jane.legs).is_a?(Array)
     expect(jane.legs.size).to eq(2)
     expect(jane.legs.first).is_a?(Thing)
@@ -37,16 +33,26 @@ describe Thing do
 
   it 'should have one head' do
     jane.has(1).head
-    expect(jane.respond_to?(:head)).to be_truthy
     expect(jane.head).is_a?(Thing)
   end
 
   it 'should define number' do
-    # jane.has(2).arms.each { having(5).fingers }
-    # jane.arms.first.fingers.size # => 5
-    #
-    jane.has(2).arms.each {having}
+    jane.has(2).arms.each {having(1).hand}
+
+    left_arm = jane.arms.first
+    expect(left_arm).is_a?(Thing)
+    expect(left_arm.name).to eq(:arms)
+    expect(left_arm.hand).is_a?(Thing)
+
+    right_arm = jane.arms.first
+    expect(right_arm).is_a?(Thing)
+    expect(right_arm.name).to eq(:arms)
+    expect(right_arm.hand).is_a?(Thing)
   end
 
+
+  def having(_)
+    double.as_null_object
+  end
 
 end

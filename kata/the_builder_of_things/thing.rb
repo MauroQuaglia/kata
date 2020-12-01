@@ -2,15 +2,17 @@ class Thing
   attr_reader(:name)
   KEYS = [:is_a, :is_not_a, :is_the, :has]
 
-  def initialize(name, &block)
+  def initialize(name)
     @name = name
     @collector = []
-    puts block.inspect
-    instance_eval {block}
   end
 
-  def having
-    raise 'jskjskjsk'
+  def having(count)
+    has(count)
+  end
+
+  def each(&block)
+    instance_eval(&block)
   end
 
   def method_missing(symbol, *args, &block)
@@ -37,14 +39,17 @@ class Thing
 
     if key == :has
       method_name, count = @collector[2], @collector[1]
+      puts @collector.inspect
       if @collector.size == 3
         result = Array([Thing.new(method_name)] * count)
       end
+=begin
       if @collector.size == 5
         puts @collector.inspect
         method_block = @collector[4]
         result = Array([Thing.new(method_name, &method_block)] * count)
       end
+=end
       define_singleton_method("#{method_name}") {result}
     end
 

@@ -1,5 +1,5 @@
 require_relative '../spec_helper'
-require_relative '../../kata/the_builder_of_things/thing'
+require_relative '../../kata/the_builder_of_things_WIP/thing'
 
 describe Thing do
   let(:jane) {described_class.new('Jane')}

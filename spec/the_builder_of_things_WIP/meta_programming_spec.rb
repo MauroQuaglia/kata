@@ -77,7 +77,7 @@ describe 'Metaprogramming' do
     expect(creso.man?).to be_falsey
   end
 
-  it 'creso block' do
+  xit 'creso block' do
     #jane.has(2).arms.each { having(1).hand.having(5).fingers }
     Creso.new('Creso').each {having(1)}
   end
